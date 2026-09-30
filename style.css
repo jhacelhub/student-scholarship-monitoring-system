@@ -1,0 +1,1 @@
+:root{--g:#14532d}body{background:#f4f7f5}.sb{background:var(--g);min-height:100vh}.sb a{color:#d1fae5;display:block;padding:.6rem 1rem;text-decoration:none;cursor:pointer}.sb a:hover,.sb a.on{background:#166534;color:#fff}.bg-g{background:var(--g)!important}.btn-g{background:var(--g);color:#fff}.card-k{border-left:5px solid var(--g)}

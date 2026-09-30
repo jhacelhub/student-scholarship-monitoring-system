@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Student Scholarship Monitoring and Academic Compliance System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"><link href="style.css" rel="stylesheet"></head><body>
+<div id="auth" class="container py-5 d-none" style="max-width:420px"><div class="card shadow"><div class="card-header bg-g text-white"><i class="fa fa-graduation-cap"></i> Scholarship Monitoring System</div><div class="card-body">
+<h5 id="at">Login</h5><input id="fn" class="form-control mb-2 d-none" placeholder="Full name"><input id="sid" class="form-control mb-2 d-none" placeholder="Student ID (scholars only, optional)"><input id="em" type="email" class="form-control mb-2" placeholder="Email"><input id="pw" type="password" class="form-control mb-2" placeholder="Password (min 6)">
+<button class="btn btn-g w-100" id="go">Login</button><a href="#" id="sw" class="d-block mt-2 small">No account? Register</a></div></div></div>
+<div id="app" class="d-none"><nav class="navbar bg-g navbar-dark px-3"><span class="navbar-brand">Scholarship Monitoring</span><span class="text-white"><span id="who"></span> <button class="btn btn-sm btn-light ms-2" id="out"><i class="fa fa-sign-out-alt"></i> Logout</button></span></nav>
+<div class="row g-0"><div class="col-md-2 sb" id="nav"></div><main class="col-md-10 p-3"><div id="v"></div></main></div></div>
+<div class="modal fade" id="m"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 id="mt"></h5></div><div class="modal-body" id="mb"></div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-g" id="ms">Save</button></div></div></div></div>
+<div class="toast-container position-fixed top-0 end-0 p-3" id="tc"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script><script src="app.js"></script></body></html>

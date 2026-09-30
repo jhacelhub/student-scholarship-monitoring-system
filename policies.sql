@@ -1,0 +1,16 @@
+create or replace function my_role() returns text language sql stable security definer set search_path=public as $$select role from profiles where id=auth.uid()$$;
+alter table profiles enable row level security;alter table scholarship_programs enable row level security;alter table scholars enable row level security;alter table grade_submissions enable row level security;
+create policy p_sel on profiles for select using(id=auth.uid() or my_role() in('admin','staff'));
+create policy p_upd on profiles for update using(id=auth.uid()) with check(id=auth.uid() and role=my_role());
+create policy p_adm on profiles for all using(my_role()='admin');
+create policy sp_sel on scholarship_programs for select using(auth.uid() is not null);
+create policy sp_w on scholarship_programs for all using(my_role()='admin') with check(my_role()='admin');
+create policy s_sel on scholars for select using(my_role() in('admin','staff') or user_id=auth.uid());
+create policy s_ins on scholars for insert with check(my_role() in('admin','staff'));
+create policy s_upd on scholars for update using(my_role() in('admin','staff'));
+create policy s_del on scholars for delete using(my_role()='admin');
+create policy g_sel on grade_submissions for select using(my_role() in('admin','staff') or scholar_id in(select id from scholars where user_id=auth.uid()));
+create policy g_ins on grade_submissions for insert with check(submission_status='Pending' and (my_role() in('admin','staff') or scholar_id in(select id from scholars where user_id=auth.uid())));
+create policy g_upd on grade_submissions for update using(my_role() in('admin','staff'));
+create policy g_del on grade_submissions for delete using(my_role()='admin');
+-- After registering, make yourself admin: update profiles set role='admin' where id=(select id from auth.users where email='YOUR_EMAIL');
